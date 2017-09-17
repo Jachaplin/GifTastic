@@ -28,8 +28,21 @@ $(document).ready(function() {
       // console.log(response.Runtime);
       });
   	}
-      // Grabbing and storing the data-animal property value from the button
+
+  	function renderButtons() {
+
+     topics.forEach(function(car) {
+     	// console.log(car)
+     	oneCar = $("<button>")
+     	oneCar.addClass("cars")
+     	oneCar.attr("data-name", car)
+     	oneCar.text(car)
+     	$("#car-buttons").append(oneCar)
+     
+     })
+  	}
       
+   renderButtons()  
    runQuery(queryURL)
 
 
