@@ -14,24 +14,41 @@ $(document).ready(function() {
 
  // switch the protocol in the query URL from http to https
 
-  var queryURL = "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=dc6zaTOxFJmzC"
 
   var topics = ["Alfa Romeo", "Aston Martin", "Audi", "Bugatti", "Ferrari", "Jaguar", "Lamborghini", "Lotus", "McLaren", "Maserati"]
 
-  	function runQuery(queryURL) {
+  	function displayCarGif() {
+  	  $("#car-gifs").empty()
+  	  var carGif = $(this).attr("data-name")	
+  	  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + carGif + "&api_key=dc6zaTOxFJmzC&limit=10&rating"
 
       $.ajax({
         url: queryURL,
         method: "GET"
       }).done(function(response) {
-        console.log(response);
-      // console.log(response.Runtime);
-      });
+        console.log(response)
+        console.log(response.data["0"].embed_url)
+
+        for (var i = 0; i < 10; i++) {
+        	
+
+          var gifURL = response.data[i].embed_url
+          var addCarGif = $("<iframe>")
+          addCarGif.attr("src", gifURL)
+          addCarGif.attr("alt", "car gif")
+          $("#car-gifs").prepend(addCarGif)
+
+        // var carDiv = $("<div class='cars'>")
+        }
+      
+      })
   	}
 
   	function renderButtons() {
+      
+      $("#car-buttons").empty()
 
-     topics.forEach(function(car) {
+      topics.forEach(function(car) {
      	// console.log(car)
      	oneCar = $("<button>")
      	oneCar.addClass("cars")
@@ -41,9 +58,19 @@ $(document).ready(function() {
      
      })
   	}
-      
-   renderButtons()  
-   runQuery(queryURL)
+
+  	$("#add-car").on("click", function(event) {
+  		
+  		event.preventDefault()
+  		var addCar = $("#car-input").val().trim()
+  		topics.push(addCar)
+  		renderButtons()
+  		$("#car-input").val("")
+  	})
+  $(document).on("click", ".cars", displayCarGif)   
+  renderButtons()  
+  // displayCarGif()
+
 
 
 
