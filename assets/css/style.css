@@ -1,5 +1,6 @@
 body {
 	margin: 0 auto;
+	background-color: black;
 }
 
 #jumbotron-header {
@@ -8,7 +9,11 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 10px;
-
+	background-image: url("http://www.el-tony.com/wp-content/uploads/2014/06/Nissan-GTR-R35-Tuning-Front-Blue-Fire-Car-2014-HD-Wallpapers-design-by-Tony-Kokhan-www.el-tony.com_.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: white;
 
 }
 
@@ -17,6 +22,11 @@ body {
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
+	
+	/*background-image: url("http://st.motortrend.com/uploads/sites/5/2013/06/2014-Ferrari-LeFerrari-engine-blueprint.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;*/
 
 
 }
@@ -31,4 +41,13 @@ button {
 	margin-right: auto;
 	margin-left: auto;
 	width: 90%;
+}
+
+#car-form {
+	margin-right: .5%;
+}
+
+img {
+	width: 400px;
+	height: auto;
 }
